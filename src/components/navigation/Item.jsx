@@ -7,7 +7,6 @@ import React from 'react'
 export const Item = ({title, subTitle, path, icon}) => {
 
   const currentPath = usePathname()
-  console.log(currentPath)
 
   return (
     <Link href={path} className={`my-2 w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 ${currentPath.includes(path) && 'bg-blue-800'} hover:bg-white/5 transition ease-linear duration-150 rounded-md`}>
