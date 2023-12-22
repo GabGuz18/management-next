@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Modal = ({ openModal }) => {
+export const Modal = ({ openModal, type }) => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div>
@@ -14,7 +14,7 @@ export const Modal = ({ openModal }) => {
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                      <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline"> Crear categoria </h3>
+                      <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline"> {type === 'crear' ? 'Crear' : 'Editar'} categoria </h3>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500"> Escriba nombre de la categoria. </p>
                         <input type="email" className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Categoria" />

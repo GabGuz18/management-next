@@ -6,6 +6,10 @@ const menuTabs = [
     path: '/dashboard/categorias',
     title: 'Categorias',
   },
+  {
+    path: '/dashboard/productos',
+    title: 'Productos',
+  },
 ]
 
 export const Tabs = () => {
