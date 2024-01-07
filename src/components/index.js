@@ -7,4 +7,4 @@ export { Tab } from './tabs/Tab'
 
 export { Modal } from './modal/Modal'
 
-export { Table } from './table/Table'
+export { TableCategorie } from './table/TableCategorie'

@@ -1,4 +1,3 @@
-import { Table } from '@/components'
 import React from 'react'
 
 const page = () => {
@@ -8,7 +7,7 @@ const page = () => {
         <div className='text-5xl my-5'>Pagina Productos</div>
       </div>
 
-      <Table tipo='Producto' />
+
 
     </>
   )

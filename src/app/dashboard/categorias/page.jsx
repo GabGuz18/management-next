@@ -1,5 +1,6 @@
-import { Table } from '@/components'
 import React from 'react'
+import { TableCategorie } from '@/components'
+import { categories } from '@/data'
 
 const page = () => {
   return (
@@ -8,7 +9,7 @@ const page = () => {
         <div className='text-5xl my-5'>Pagina Categorias</div>
       </div>
 
-      <Table tipo='Categoria'/>
+      <TableCategorie data={categories} />
 
     </>
   )
