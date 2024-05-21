@@ -1,20 +1,32 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from '..'
 
-export const TableCategorie = ({ data }) => {
+export const TableCategory = () => {
 
 	const [isOpen, setIsOpen] = useState(false)
 	const [typeForm, setTypeForm] = useState('')
+	const [categories, setCategories] = useState([])
 	const [id, setId] = useState(null)
 
 	const openModal = (type = 'crear', info) => {
 		setIsOpen(!isOpen)
 		setTypeForm(type)
 		setId(data.filter(v => v.id === info)[0])
+	}	
+
+	const getCategories = async () => {
+		fetch("http://127.0.0.1:8000/api/categories/")
+			.then((response) => response.json())
+			.then((result) => setCategories(result))
+			.catch((error) => console.error(error));
 	}
 
+	useEffect(() => {
+		getCategories()
+	}, [])
+	
 	return (
 		<>
 			<div className="mx-16 flex items-center">
@@ -31,18 +43,14 @@ export const TableCategorie = ({ data }) => {
 					<thead className="text-left border-b border-gray-300">
 						<tr>
 							{
-								Object.keys(data[0]).map(key => {
-									return (
-											<th key={key} className="px-4 py-3">{key}</th>
-											)
-										})
-									}
+								JSON.stringify(categories)
+							}
 							<th className="px-4 py-3">Editar</th>
 						</tr>
 					</thead>
 					<tbody>
 						{
-						data.map(itm => {
+						categories.map(itm => {
 							return (
 								<tr key={itm.id} className="bg-gray-700 border-b border-gray-600">
 									<td className="px-4 py-3">{itm.id}</td>

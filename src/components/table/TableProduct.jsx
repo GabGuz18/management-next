@@ -1,18 +1,16 @@
 "use client"
 
 import React, { useState } from 'react'
-import { Modal } from '..'
+import { ModalProduct } from '..'
 
-export const TableCategorie = ({ data }) => {
+export const TableProduct = ({ data }) => {
 
 	const [isOpen, setIsOpen] = useState(false)
 	const [typeForm, setTypeForm] = useState('')
 	const [id, setId] = useState(null)
 
-	const openModal = (type = 'crear', info) => {
+	const openModal = () => {
 		setIsOpen(!isOpen)
-		setTypeForm(type)
-		setId(data.filter(v => v.id === info)[0])
 	}
 
 	return (
@@ -46,8 +44,11 @@ export const TableCategorie = ({ data }) => {
 							return (
 								<tr key={itm.id} className="bg-gray-700 border-b border-gray-600">
 									<td className="px-4 py-3">{itm.id}</td>
+									<td className="px-4 py-3">{itm.producto}</td>
+									<td className="px-4 py-3">{itm.cantidad}</td>
+									<td className="px-4 py-3">{itm.price}</td>
 									<td className="px-4 py-3">{itm.categoria}</td>
-									<td className="px-4 py-3" onClick={() => openModal('editar', itm.id)}>Editar</td>
+									<td className="px-4 py-3">Editar</td>
 								</tr>
 							)
 						})
@@ -58,7 +59,7 @@ export const TableCategorie = ({ data }) => {
 
 			{
 				isOpen
-					? <Modal type={typeForm} id={id} openModal={() => openModal()}/>
+					? <ModalProduct openModal={() => openModal()}/>
 					: null
 			}
 		</>

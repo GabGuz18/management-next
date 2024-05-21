@@ -1,9 +1,16 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
+"use client"
 
-export const Modal = ({ openModal, type, id }) => {
+import React, { useState } from 'react'
+import { Select } from '..'
 
-  const {register, handleSubmit} = useForm()
+export const ModalProduct = ({ openModal }) => {
+
+  const options = ["Opción 1", "Opción 2", "Opción 3", "Opción 4"];
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+  };
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -18,10 +25,17 @@ export const Modal = ({ openModal, type, id }) => {
                 <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="w-full mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                      <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline"> {type === 'crear' ? 'Crear' : 'Editar'} categoria </h3>
+                      <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-headline">Crear producto</h3>
                       <div className="mt-2">
-                        <p className="text-sm text-gray-500"> Escriba nombre de la categoria. </p>
-                        <input type="text" {...register("categoria")} className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Categoria" />
+                        <p className="text-sm text-gray-500"> Producto. </p>
+                        <input type="text" className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Producto" />
+                        <p className="text-sm text-gray-500 mt-4"> Cantidad. </p>
+                        <input type="number" min={0} className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Cantidad" />
+                        <p className="text-sm text-gray-500 mt-4"> Precio. </p>
+                        <input type="number" min={0} className="mt-2 p-2 border border-gray-300 rounded-md w-full focus:outline-none focus:ring focus:border-blue-500" placeholder="Precio" />
+                        <p className="text-sm text-gray-500 mt-4"> Categoria </p>
+                        <Select options={options} onSelect={handleSelect}/>
+                        {selectedOption && <p className="mt-4">Seleccionaste: {selectedOption}</p>}
                       </div>
                     </div>
                   </div>

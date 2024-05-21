@@ -6,5 +6,9 @@ export { Tabs } from './tabs/Tabs'
 export { Tab } from './tabs/Tab'
 
 export { Modal } from './modal/Modal'
+export { ModalProduct } from './modal/ModalProduct'
 
-export { TableCategorie } from './table/TableCategorie'
+export { TableCategory } from './table/TableCategory'
+export { TableProduct } from './table/TableProduct'
+
+export { Select } from './select/Select'
